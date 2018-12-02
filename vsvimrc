@@ -1,0 +1,19 @@
+let mapleader=","
+noremap <silent> <leader>y "+yy
+noremap <silent> <leader>x "+dd
+noremap <silent> <leader>p "+p
+vnoremap <silent> <leader>y "+y
+vnoremap <silent> <leader>x "+x
+inoremap <silent> <leader>p <c-r>+
+
+inoremap <m-k> <up>
+inoremap <m-j> <down>
+inoremap <m-l> <right>
+inoremap <m-h> <left>
+
+set hls "highlight search
+set ic "ignorecase
+set ts=4 "tab stop
+set sts=4 "soft tab stop
+set sw=4 "shift width
+set bs=2 "backspace
