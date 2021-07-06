@@ -1,10 +1,10 @@
 let mapleader=","
-noremap <silent> <leader>y "+yy
-noremap <silent> <leader>x "+dd
-noremap <silent> <leader>p "+p
-vnoremap <silent> <leader>y "+y
-vnoremap <silent> <leader>x "+x
-inoremap <silent> <leader>p <c-r>+
+noremap <leader>y "+yy
+noremap <leader>x "+dd
+noremap <leader>p "+p
+vnoremap <leader>y "+y
+vnoremap <leader>x "+x
+inoremap <leader>p <c-r>+
 
 inoremap <m-k> <up>
 inoremap <m-j> <down>
