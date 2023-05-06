@@ -124,7 +124,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin('~/vimfiles/plugged')
+call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline'
 Plug 'terryma/vim-multiple-cursors'
@@ -144,7 +144,7 @@ Plug 'preservim/nerdtree'
 Plug 'unkiwii/vim-nerdtree-sync'
 Plug 'moll/vim-bbye'
 Plug 'voldikss/vim-floaterm'
-Plug 'RRethy/vim-illuminate'
+"Plug 'RRethy/vim-illuminate'
 
 Plug 'tomtom/tcomment_vim'
 Plug 'Yggdroot/indentLine'
@@ -159,7 +159,7 @@ Plug 'preservim/tagbar'
 
 Plug 'mattn/emmet-vim'
 
-Plug 'ycm-core/YouCompleteMe'
+"Plug 'ycm-core/YouCompleteMe'
 Plug 'bfrg/vim-cpp-modern'
 
 " Plug 'aklt/plantuml-syntax'
