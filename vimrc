@@ -1,58 +1,54 @@
 let mapleader=","
 
-noremap  <silent> <leader>y "+yy
-noremap  <silent> <leader>x "+dd
-noremap  <silent> <leader>p "+p
+nnoremap <silent> <leader>y "+yy
+nnoremap <silent> <leader>x "+dd
+nnoremap <silent> <leader>p "+p
 vnoremap <silent> <leader>y "+y
 vnoremap <silent> <leader>x "+x
 
-nnoremap <silent> j gj
-nnoremap <silent> k gk
+nnoremap ; :
+nnoremap j gj
+nnoremap k gk
+xnoremap j gj
+xnoremap k gk
 
+nnoremap <silent> <C-,>   :e $MYVIMRC<cr>
 nnoremap <silent> <Esc>   :nohl<CR>
 inoremap <expr>   <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr>   <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" inoremap <expr>   <CR>    pumvisible() ? "\<C-y>" : "\<CR>"
+nnoremap <silent> <Tab>   :bn<CR>
+nnoremap <silent> <S-Tab> :bp<CR>
+nnoremap <silent> <M-w>   :bd<CR>
 
-nmap     <silent> <C-,> :e $MYVIMRC<cr>
-nmap     <silent> <leader>zp :e $MYVIMRC<cr>
-nmap     <silent> <m-h> <C-w>h
-nmap     <silent> <m-l> <C-w>l
-nmap     <silent> <m-j> <C-w>j
-nmap     <silent> <m-k> <C-w>k
+nnoremap <silent> <M-h> <C-w>h
+nnoremap <silent> <M-l> <C-w>l
+nnoremap <silent> <M-j> <C-w>j
+nnoremap <silent> <M-k> <C-w>k
+inoremap <silent> <M-h> <left>
+inoremap <silent> <M-l> <right>
+inoremap <silent> <M-k> <up>
+inoremap <silent> <M-j> <down>
 
-inoremap <m-k> <up>
-inoremap <m-j> <down>
-inoremap <m-h> <left>
-inoremap <m-l> <right>
+" for when you mess up and hold shift too long (using ! to prevent errors while
+" sourcing vimrc after it was updated)
+command! W w
+command! WQ wq
+command! Wq wq
+command! Q q
 
-" autocmd! BufEnter * :slient lcd %:p:h
-" autocmd! BufEnter * :slient lchdir %:p:h
-
-autocmd! BufWritePost $MYVIMRC source $MYVIMRC "| echom "Reloaded ".$MYVIMRC
-
-
-""""""""""""""""""""""""""" clang-format """""""""""""""""""""""""""
-" let $PATH .= ';'.$LLVM.'/bin'
-
-" let g:clang_format_path=$LLVM.'/bin/clang-format.exe'
-" let g:clang_format_fallback_style="Microsoft"
-
-" let $_CLANG_FORMAT_PY_=$LLVM.'/share/clang/clang-format.py'
-" if has('python')
-"   map  <C-I> :pyf $_CLANG_FORMAT_PY_<cr>
-"   imap <C-I> <c-o>:pyf $_CLANG_FORMAT_PY_<cr>
-" elseif has('python3')
-"   map  <C-I> :py3f $_CLANG_FORMAT_PY_<cr>
-"   imap <C-I> <c-o>:py3f $_CLANG_FORMAT_PY_ -lines=all<cr>
-" endif
+" changing file types:
+command! DOS  set ff=dos  " force windows style line endings
+command! UNIX set ff=unix " force unix style line endings
+command! MAC  set ff=mac  " force mac style line endings
 
 
 """"""""""""""""""""""""""" options """""""""""""""""""""""""""
+" Syntax highlighting
 syntax on
 filetype on
-filetype plugin on
 filetype indent on
+filetype plugin on
+filetype plugin indent on
 
 
 set nocompatible
@@ -79,7 +75,7 @@ set ic "ignorecase
 
 "guifont
 "set gfn=Consolas:h11
-set gfn=Sarasa\ Term\ SC\ Nerd:h11
+set gfn=Sarasa\ Fixed\ SC\ Nerd\ Font:h12
 
 set ls=2 "laststatus
 set ts=4 "tab stop
@@ -106,12 +102,19 @@ set noeb "noerrorbells
 set novb "novisualbell
 " set vb t_vb=
 
-set timeoutlen=250
+"set timeoutlen=250
 set autochdir
 
 " set clipboard=unnamed
 set completeopt=menu,menuone
 " set completeopt=menu,menuone,noinsert,noselect
+
+
+
+" autocmd! BufEnter * :slient lcd %:p:h
+" autocmd! BufEnter * :slient lchdir %:p:h
+
+autocmd! BufWritePost $MYVIMRC source $MYVIMRC "| echom "Reloaded ".$MYVIMRC
 
 let $PATH .= ';'.$VIMRUNTIME.'\\3rdparty'
 autocmd! InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后自动关闭预览窗口
@@ -119,14 +122,17 @@ autocmd! InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后�
 
 "*****************   plug.vim *****************************
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-startify'
-Plug 'vim-airline/vim-airline'
+Plug 'altercation/vim-colors-solarized'
+Plug 'ap/vim-buftabline'
+Plug 'maciakl/vim-neatstatus'
+Plug 'itchyny/vim-cursorword'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -135,7 +141,7 @@ Plug 'tpope/vim-endwise'
 Plug 'Raimondi/delimitMate'
 Plug 'andymass/vim-matchup'
 Plug 'markonm/traces.vim'
-Plug 'junegunn/vim-easy-align'
+Plug 'zczsyqxl/vim-alignment'
 Plug 'easymotion/vim-easymotion'
 Plug 'rhysd/clever-f.vim'
 Plug 'ryanoasis/vim-devicons'
@@ -144,15 +150,11 @@ Plug 'preservim/nerdtree'
 Plug 'unkiwii/vim-nerdtree-sync'
 Plug 'moll/vim-bbye'
 Plug 'voldikss/vim-floaterm'
-"Plug 'RRethy/vim-illuminate'
 
 Plug 'tomtom/tcomment_vim'
 Plug 'Yggdroot/indentLine'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'vim-autoformat/vim-autoformat'
-
-Plug 'lifepillar/vim-solarized8'
-Plug 'lifepillar/vim-cheat40'
 
 Plug 'derekwyatt/vim-fswitch'
 Plug 'preservim/tagbar'
@@ -164,21 +166,18 @@ Plug 'bfrg/vim-cpp-modern'
 
 " Plug 'aklt/plantuml-syntax'
 
+Plug 'Donaldttt/fuzzyy'
 call plug#end()
+
 
 nnoremap <leader>ii :PlugClean!  \| :PlugInstall<CR>
 nnoremap <leader>iu :PlugUpgrade \| :PlugUpdate<CR>
 
-"*****************   easy-align   ***************************
+"*****************   Startify   ***************************
 nmap <leader>h <cmd>:Startify<CR>
 let g:startify_enable_special = 0
 let g:startify_disable_at_vimenter = 1
 " let g:startify_lists = [ { 'type': 'files', 'header': ['   MRU']}, ]
-
-
-"*****************   easy-align   ***************************
-xmap <leader>a <Plug>(EasyAlign)
-nmap <leader>a <Plug>(EasyAlign)
 
 
 "*****************   nerdtree   ***************************
@@ -187,15 +186,10 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeAutoDeleteBuffer = 1
 " nnoremap <leader>l :NERDTreeFind<CR>
-nnoremap <leader>l :NERDTreeToggle<CR>
+" nnoremap <leader>l :NERDTreeToggle<CR>
 "autocmd VimEnter * NERDTree
 
 let g:nerdtree_sync_cursorline = 1
-
-
-"*****************   airline *****************************
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 
 "*****************   clever-f *****************************
@@ -238,10 +232,10 @@ let g:floaterm_width=0.85
 let g:floaterm_height=0.80
 let g:floaterm_title='Terminal'
 let g:floaterm_autoclose=2
-nmap <M-=> <cmd>:FloatermToggle<CR>
-imap <M-=> <cmd>:FloatermToggle<CR>
-xmap <M-=> <cmd>:FloatermToggle<CR>
-tmap <M-=> <cmd>:FloatermToggle<CR>
+nmap <M-`> <cmd>:FloatermToggle<CR>
+imap <M-`> <cmd>:FloatermToggle<CR>
+xmap <M-`> <cmd>:FloatermToggle<CR>
+tmap <M-`> <cmd>:FloatermToggle<CR>
 tmap <esc> <cmd>:FloatermHide<CR>
 
 
@@ -289,11 +283,11 @@ let g:cpp_simple_highlight = 1
 "*****************   theme|color **************************
 if has('gui_running')
     set  background=light
-    colo solarized8
+    colo solarized
 else
     set  background=dark
     " colo desert
     " colo industry
     " hi Visual ctermfg=white ctermbg=lightred
-    "hi CursorLine ctermfg=white ctermbg=23 cterm=NONE
+    " hi CursorLine ctermfg=white ctermbg=23 cterm=NONE
 endif

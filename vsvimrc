@@ -1,19 +1,19 @@
-let mapleader=","
-noremap <leader>y "+yy
-noremap <leader>x "+dd
-noremap <leader>p "+p
-vnoremap <leader>y "+y
-vnoremap <leader>x "+x
-inoremap <leader>p <c-r>+
-
-inoremap <m-k> <up>
-inoremap <m-j> <down>
-inoremap <m-l> <right>
-inoremap <m-h> <left>
-
-set hls "highlight search
-set ic "ignorecase
-set ts=4 "tab stop
-set sts=4 "soft tab stop
-set sw=4 "shift width
-set bs=2 "backspace
+"let mapleader=","
+"noremap  <leader>y "+yy
+"noremap  <leader>x "+dd
+"noremap  <leader>p "+p
+"vnoremap <leader>y "+y
+"vnoremap <leader>x "+x
+"inoremap <leader>p <c-r>+
+"
+"inoremap <m-k> <up>
+"inoremap <m-j> <down>
+"inoremap <m-l> <right>
+"inoremap <m-h> <left>
+"
+"set hls "highlight search
+"set ic "ignorecase
+"set ts=4 "tab stop
+"set sts=4 "soft tab stop
+"set sw=4 "shift width
+"set bs=2 "backspace
