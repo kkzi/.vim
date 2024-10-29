@@ -1,0 +1,46 @@
+let mapleader=","
+
+set nu rnu ic nocul hls
+set ts=4  "tab stop
+set bs=2  "backspace
+set sw=4  "shift width
+set sts=4 "soft tab stop
+
+"set timeoutlen=2500
+"set clipboard=unnamed
+
+nmap <leader>e :e ~/.vim/vsvimrc<cr>
+nmap <leader>s :so ~/.vim/vsvimrc<cr>
+
+nmap <leader>y "+yy
+nmap <leader>x "+dd
+nmap <leader>p "+p
+nmap <leader>P "+P
+vmap <leader>y "+y
+vmap <leader>x "+x
+vmap <leader>p "+p
+vmap <leader>P "+P
+nmap <tab> :tabn<cr>
+nmap <c-tab> :tabp<cr>
+
+nmap <leader>x :close<cr>
+
+nmap ; :
+nmap gh ^
+nmap gl $
+nmap gs 0
+nmap ge G
+nmap j  gj
+nmap k  gk
+
+imap <A-k> <up>
+imap <A-j> <down>
+
+nnoremap <esc> :nohl<cr><esc>
+nnoremap < <<
+nnoremap > >>
+nnoremap <c-u> <c-u>zz
+nnoremap <c-d> <c-d>zz
+nnoremap <c-b> <c-b>zz
+nnoremap <c-f> <c-f>zz
+
