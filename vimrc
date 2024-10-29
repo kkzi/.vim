@@ -157,12 +157,12 @@ endif
 
 
 "*****************   plug.vim *****************************
-let VIMRC_DIR = fnamemodify($MYVIMRC, ":h")
-if empty(glob('~/$VIMRC_DIR/autoload/plug.vim'))
-    silent !curl -fLo ~/$VIMRC_DIR/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+" let VIMRC_DIR = fnamemodify($MYVIMRC, ":h")
+" if empty(glob('~/$VIMRC_DIR/autoload/plug.vim'))
+"     silent !curl -fLo ~/$VIMRC_DIR/autoload/plug.vim --create-dirs
+"                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
